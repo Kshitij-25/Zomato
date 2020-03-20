@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RatingCard extends StatelessWidget {
-  double rating = 3.6;
+  final double rating = 3.6;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(

@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as Http;
-import 'package:zomato/models/geocode.dart';
-import 'package:zomato/models/sample.dart';
+import 'package:zomato/constants.dart';
+import 'package:zomato/models/common/geocode.dart';
+import 'package:zomato/models/common/sample.dart';
 
 class GeoCodeProvider with ChangeNotifier {
   GeoCode _geoCode;
-
   GeoCode get geocode {
     return _geoCode;
   }
@@ -21,7 +21,7 @@ class GeoCodeProvider with ChangeNotifier {
       var response = await Http.get(
           'https://developers.zomato.com/api/v2.1/geocode?lat=$latitude&lon=$longitude',
           headers: {
-            'user-key': '44b18afd949ec2fe03fa8fa6149b77cd',
+            'user-key': '$apiKey',
             'latitude': '$latitude',
             'longitude': '$longitude',
           });

@@ -1,3 +1,5 @@
+import 'package:zomato/models/restaurants/restaurant.dart';
+
 class GeoCode {
   Locality location;
   Popularity popularity;
@@ -134,6 +136,7 @@ class NearbyRestaurants {
     return data;
   }
 }
+/*
 
 class Restaurant {
   String id;
@@ -226,6 +229,7 @@ class Restaurant {
     return data;
   }
 }
+*/
 
 
 class Location {
@@ -252,8 +256,7 @@ class Location {
     cityId = json['city_id'];
     latitude = json['latitude'];
     longitude = json['longitude'];
-    ;
-  }
+    }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

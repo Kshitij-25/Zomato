@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zomato/provider/categories_provider.dart';
+import 'package:zomato/provider/cities_provider.dart';
 import 'package:zomato/widgets/cuisineCard.dart';
 import 'package:zomato/widgets/previousOrderCard.dart';
 import 'package:zomato/widgets/sliver_header.dart';
@@ -10,6 +12,13 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ImageBox extends StatelessWidget {
-  String image;
+  final String image;
   ImageBox({@required this.image});
   @override
   Widget build(BuildContext context) {

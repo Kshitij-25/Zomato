@@ -117,6 +117,7 @@ class DetailsPage extends StatelessWidget {
                             style: TextStyle(color: Colors.grey),
                           ),
                           Switch.adaptive(
+                            onChanged: null,
                             value: false,
                           ),
                         ],
