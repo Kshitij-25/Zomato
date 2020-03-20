@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zomato/screens/main_screen1.dart';
+import 'package:zomato/screens/main_screen.dart';
+import 'package:zomato/screens/mapscreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,6 +10,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MainScreen(),
+      routes: {
+        MapScreen.routeName: (ctx) => MapScreen(),
+      },
     );
   }
 }

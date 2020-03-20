@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zomato/provider/categories_provider.dart';
 import 'package:zomato/provider/cities_provider.dart';
+import 'package:zomato/screens/mapscreen.dart';
 import 'package:zomato/widgets/cuisineCard.dart';
 import 'package:zomato/widgets/previousOrderCard.dart';
+import 'package:zomato/widgets/search.dart';
 import 'package:zomato/widgets/sliver_header.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,8 +19,8 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,46 +30,79 @@ class _MainScreenState extends State<MainScreen> {
           slivers: <Widget>[
             SliverAppBar(
               backgroundColor: Colors.white,
-              title: Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.location_on,
-                    color: Colors.red,
-                  ),
-                  Text(
-                    'Sector 4, Vaishali',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ],
+              title: GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (_) {
+                      return Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Text(
+                                'Search Location',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 20),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Search(),
+                            ),
+                            FlatButton.icon(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.gps_fixed,
+                                color: Colors.red,
+                              ),
+                              label: Text(
+                                'Use current location',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                            Divider(),
+                            FlatButton.icon(
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamed(MapScreen.routeName),
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.red,
+                              ),
+                              label: Text(
+                                'Add address',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                            Divider(),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+                behavior: HitTestBehavior.opaque,
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.location_on,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      'Sector 4, Vaishali',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),
               ),
               floating: false,
               pinned: true,
             ),
             SliverHeader(
               bgColor: Colors.white,
-              child: Container(
-                padding: EdgeInsets.all(3.0),
-                child: TextField(
-                  enableInteractiveSelection: false,
-                  controller: controller,
-                  decoration: InputDecoration(
-                    hintText: "Search for Restaurants, dishes, sweets, snacks",
-                    hintStyle: TextStyle(
-                        color: Colors.black45, fontWeight: FontWeight.bold),
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.black45,
-                      size: 25,
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 0.0, color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-              ),
+              child: Search(),
             ),
             SliverPersistentHeader(
               delegate: _SliverAppBarDelegate(
@@ -109,62 +144,6 @@ class _MainScreenState extends State<MainScreen> {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (_) {
-                          return Container(
-                            height: 300,
-                            width: double.infinity,
-                            child: SingleChildScrollView(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    TextField(
-                                      decoration:
-                                          InputDecoration(labelText: "search"),
-                                    ),
-                                    Divider(),
-                                    Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.location_on,
-                                          color: Colors.green,
-                                        ),
-                                        Text(
-                                          "Use current location",
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                      ],
-                                    ),
-                                    Divider(),
-                                    Text(
-                                      "Saved Addresses",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Divider(),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    behavior: HitTestBehavior.opaque,
-                    child: Container(
-                      height: 20,
-                      width: 50,
-                      child: Text("open"),
-                    ),
-                  ),
                   Container(
                     color: Color(0xffEFEFEF),
                     height: 200,

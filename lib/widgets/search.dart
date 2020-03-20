@@ -4,24 +4,27 @@ import 'package:flutter/material.dart';
 class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            width: MediaQuery.of(context).size.width / 1.3,
-            child: SearchBar(
-              onSearch: null,
-              onItemFound: null,
-              hintText: "Search for restaurants, cuisnes...",
-            ),
+    TextEditingController controller = TextEditingController();
+    return Container(
+      padding: EdgeInsets.all(3.0),
+      child: TextField(
+        enableInteractiveSelection: false,
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: "Search for Restaurants, dishes, sweets, snacks",
+          hintStyle:
+              TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+          prefixIcon: Icon(
+            Icons.search,
+            color: Colors.black45,
+            size: 25,
           ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: IconButton(icon: Icon(Icons.sort), onPressed: () {}),
-          )
-        ],
+          border: OutlineInputBorder(
+            borderSide: BorderSide(width: 0.0, color: Colors.transparent),
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+        ),
+        keyboardType: TextInputType.emailAddress,
       ),
     );
   }
