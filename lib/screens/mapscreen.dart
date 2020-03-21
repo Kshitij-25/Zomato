@@ -18,13 +18,20 @@ class _MapScreenState extends State<MapScreen> {
             options: new MapOptions(
                 center: new LatLng(28.6466, 77.3396), minZoom: 10.0),
             layers: [
+              // new TileLayerOptions(
+              //   urlTemplate: "https://api.tiles.mapbox.com/v4/"
+              //       "{id}/{z}/{x}/{y}@2x.png?access_token=pk.eyJ1Ijoia3NoaXRpanBhc3NpIiwiYSI6ImNrNzMxNGc2NjA3b2YzbG1pd3VjZ3J5bmkifQ.NaCDaeE7aIg3eL4AG_7-zg",
+              //   additionalOptions: {
+              //     'accessToken':
+              //         'pk.eyJ1Ijoia3NoaXRpanBhc3NpIiwiYSI6ImNrNzMxNGc2NjA3b2YzbG1pd3VjZ3J5bmkifQ.NaCDaeE7aIg3eL4AG_7-zg',
+              //     'id': 'mapbox.streets',
+              //   },
+              // ),
               new TileLayerOptions(
-                urlTemplate: "https://api.tiles.mapbox.com/v4/"
-                    "{id}/{z}/{x}/{y}@2x.png?access_token=pk.eyJ1Ijoia3NoaXRpanBhc3NpIiwiYSI6ImNrNzMxNGc2NjA3b2YzbG1pd3VjZ3J5bmkifQ.NaCDaeE7aIg3eL4AG_7-zg",
+                urlTemplate: "https://api.tomtom.com/map/1/tile/basic/main/"
+                    "{z}/{x}/{y}.png?key=zEGVjdFzbYhQO7Qan5XliSOg27wkdFya",
                 additionalOptions: {
-                  'accessToken':
-                      'pk.eyJ1Ijoia3NoaXRpanBhc3NpIiwiYSI6ImNrNzMxNGc2NjA3b2YzbG1pd3VjZ3J5bmkifQ.NaCDaeE7aIg3eL4AG_7-zg',
-                  'id': 'mapbox.streets',
+                  'apiKey': 'zEGVjdFzbYhQO7Qan5XliSOg27wkdFya',
                 },
               ),
               new MarkerLayerOptions(
@@ -49,8 +56,6 @@ class _MapScreenState extends State<MapScreen> {
             ],
           ),
           Positioned(
-            // top: 220,
-            // bottom: 0,
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(

@@ -50,7 +50,8 @@ class _MainScreenState extends State<MainScreen> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
-                              child: Search(),
+                              child: Search(
+                                  "Search for your location"),
                             ),
                             FlatButton.icon(
                               onPressed: () {},
@@ -102,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             SliverHeader(
               bgColor: Colors.white,
-              child: Search(),
+              child: Search("Search for Restaurants, dishes, sweets, snacks"),
             ),
             SliverPersistentHeader(
               delegate: _SliverAppBarDelegate(

@@ -2,6 +2,8 @@ import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 
 class Search extends StatelessWidget {
+  final String hintText;
+  Search(this.hintText);
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
@@ -11,7 +13,7 @@ class Search extends StatelessWidget {
         enableInteractiveSelection: false,
         controller: controller,
         decoration: InputDecoration(
-          hintText: "Search for Restaurants, dishes, sweets, snacks",
+          hintText: hintText,
           hintStyle:
               TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
           prefixIcon: Icon(
